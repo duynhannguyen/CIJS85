@@ -1,22 +1,16 @@
-import logo from "./logo.svg";
 import "./App.css";
-
-const Black = ({ message }) => {
-  return <Blue message={message} />;
-};
-const Blue = ({ message }) => {
-  return <Red message={message} />;
-};
-const Red = ({ message }) => {
-  return <p> {message} </p>;
-};
+import { createContext, useContext } from "react";
+import House from "./components/House";
+import MyStoreContext from "./contexts/MyStoreContext";
 
 function App() {
-  const message = "Hello world";
+  const MessageValue = "Nội thất";
   return (
-    <div className="App">
-      <Black message={message} />
-    </div>
+    <MyStoreContext.Provider value={{ message: MessageValue }}>
+      <div>
+        <House />
+      </div>
+    </MyStoreContext.Provider>
   );
 }
 
