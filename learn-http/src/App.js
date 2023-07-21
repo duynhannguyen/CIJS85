@@ -9,18 +9,16 @@ import Header from "./components/Header";
 import MovieDetail from "./components/MovieDetail";
 function App() {
   return (
-    <BrowserRouter>
-      <div className="App">
-        <Header />
-        <Routes>
-          <Route path="/" element={<Homepage />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/movies/:id" element={<MovieDetail />} />
-          <Route path="*" element={<PageNotFound />} />
-        </Routes>
-      </div>
-    </BrowserRouter>
+    <div className="App">
+      <Header />
+      <Routes>
+        <Route path="/" element={<Homepage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/movies/:id" element={<MovieDetail />} />
+        <Route path="*" element={<PageNotFound />} />
+      </Routes>
+    </div>
   );
 }
 
