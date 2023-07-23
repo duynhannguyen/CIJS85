@@ -1,0 +1,12 @@
+.home-page{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.home-page-nav{
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 100px;
+}
