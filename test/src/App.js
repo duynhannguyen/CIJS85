@@ -1,8 +1,15 @@
 import logo from "./logo.svg";
 import "./App.css";
 import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-import { getFirestore, collection, getDocs, addDoc } from "firebase/firestore";
+import {
+  getFirestore,
+  collection,
+  getDocs,
+  updateDoc,
+  doc,
+  addDoc,
+  deleteDoc,
+} from "firebase/firestore";
 function App() {
   const firebaseConfig = {
     apiKey: "AIzaSyBzrt3gJixp9zTcWDrpvL1B8pkMBackXAM",
@@ -15,19 +22,27 @@ function App() {
   };
   initializeApp(firebaseConfig);
   const db = getFirestore();
+  console.log("db", db);
   const colRef = collection(db, "testData");
+  const docRef = doc(db, "testData", "yG0tBtMGaJDTuULsMwAx");
+  //  lấy data từ Firebase
   getDocs(colRef)
     .then((snapshot) => {
-      let testData = [];
+      let result = [];
       snapshot.docs.forEach((doc) => {
-        testData.push({ ...doc.data(), id: doc.id });
+        result.push({ ...doc.data(), id: doc.id });
       });
-      console.log(testData);
+
+      console.log("result", result);
     })
-    .catch((err) => {
-      console.log(err.message);
-    });
-  addDoc(colRef, { userName: "Hồ Nguyễn Biển Ngọc" });
+    .catch((err) => err.message);
+  // update document by id
+  // updateDoc(docRef, { userPhone: "123456789" });
+  // thêm data vào collection
+  // addDoc(colRef, { userPhone: 132456789 }, "yG0tBtMGaJDTuULsMwAx");
+  // deleteDoc( "e51bTbVR7V7ZiuZnfhUq");
+  // deleteDoc( "lPhlOb0vxoNFZxVW1Rlw");
+  // deleteDoc( "mnHMeTjGppQadFA5R4FL");
   return (
     <div className="App">
       <h1> Test firebase</h1>
